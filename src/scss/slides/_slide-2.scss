@@ -1,0 +1,27 @@
+.slide-2{
+    div{
+        font-size: 1.3rem;
+        text-align: center;
+    }
+    h2{
+        font-weight: normal;
+        font-size: 1.4rem;
+        text-align: center;
+        color: #FB0200;
+        padding: 0;
+        margin: 0;
+        line-height: 3rem;
+        position: relative;
+    }
+    h2:after{
+        content: "";
+        height: 0.1rem;
+        width: 40%;
+        background: #B0B0B0;
+        position: absolute;
+        left: 50%;
+        top: 3.1rem;
+        transform: translateX(-50%);
+    }
+    
+}

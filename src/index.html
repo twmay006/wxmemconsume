@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>我的运动成绩单</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <!-- <meta name="keywords" content="keywords快来看看属于你的成绩单吧">
+    <meta name="description" content="description快来看看属于你的成绩单吧"> -->
+	<link rel="shortcut icon" href="images/favicon.ico">
+	
+
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="页面标题">
+	<meta property="og:description" content="页面描述">
+	<meta property="og:image" content="http://ocr8t9d3o.bkt.clouddn.com/logo33.jpg">
+	<meta property="og:url" content="http://www.example.com/">
+
+
+
+    <!-- Uncomment this if you need apple touch icon. -->
+    <!--
+    <link rel="apple-touch-icon" href="touch-icon-iphone.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="touch-icon-ipad.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="touch-icon-iphone-retina.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="touch-icon-ipad-retina.png">
+    -->
+
+    <!-- Don't delete this. It's needed for development workflow. -->
+    <!-- inject:css -->
+    <!-- endinject -->
+</head>
+
+<body>
+<!-- <div class="ico" >
+	<img src='http://ocr8t9d3o.bkt.clouddn.com/logo33.jpg' />
+</div> -->
+<!-- <img src="http://ocr8t9d3o.bkt.clouddn.com/logo33.jpg" style="position:absolute;left:-800px;top:-800px;opacity:0;"> -->
+<div class="loading-overlay">
+    <img src="images/loading.svg">
+</div>
+
+<div class="swiper-container" id="app">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide slide-1">
+        	<h2 class="animated" data-ani-name="zoomIn" data-ani-duration="1s" data-ani-delay="0s">我的{{year}}运动成绩单</h2>
+        	<div class="item-message">
+	        	<div class="animated" data-ani-name="fadeInDown" data-ani-duration="1s" data-ani-delay="0.3s">
+	        		<h6>收件人：</h6>
+	        		<h4>{{memebrName}}</h4>
+	        		<h6>发信人：花园体育中心</h6>
+	        	</div>
+        	</div>    
+        	<div class="item-btn">
+        		<button class="animated" data-ani-name="fadeInUp" data-ani-duration="1s" data-ani-delay="0.1s">开启我的{{year}}运动成绩单</button>
+        	</div>
+        </div>
+        <div class="swiper-slide slide-2">
+        	<div class="animated item-container" data-ani-name="rotateInUpLeft" data-ani-duration="1s" data-ani-delay="0.1s">
+        		<div>
+	        		<h3>我在{{regDate}}</h3>
+		        	<h2>注册成为会员</h2>
+        		</div>
+	        	<div>至今:<span class="animated" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1s">{{duration}}</span>天</div>
+	        	<p>继续努力保持完美身材</p>
+        	</div>
+        </div>
+        <div class="swiper-slide slide-3">
+            <div class="animated item-container" data-ani-name="rotateInUpRight" data-ani-duration="1s" data-ani-delay="0.1s">
+        		<div>
+	        		<h3>我的{{year}}{{half}}半年运动数据</h3>
+        		</div>
+        		<ul>
+        			<li class="none-data" v-if="!total">暂时没有数据</li>
+        			<li v-if="total && sportsData.badmintonTimes">羽毛球:<span class="animated" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1s">{{sportsData.badmintonTimes}}</span>次</li>
+        			<li v-if="total && sportsData.tableTennisTimes">乒乓球:<span class="animated" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1s">{{sportsData.tableTennisTimes}}</span>次</li>
+        			<li v-if="total && sportsData.basketballTimes">篮球:<span class="animated" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1s">{{sportsData.basketballTimes}}</span>次</li>
+        			<li v-if="total && sportsData.tennisTimes">网球:<span class="animated" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1s">{{sportsData.tennisTimes}}</span>次</li>
+        			<li v-if="total && sportsData.swimTimes">游泳:<span class="animated" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1s">{{sportsData.swimTimes}}</span>次</li>
+        			<li v-if="total && sportsData.bodybuildingTimes">健身:<span class="animated" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1s">{{sportsData.bodybuildingTimes}}</span>次</li>
+        			<li v-if="total && sportsData.billiardsTimes">台球:<span class="animated" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1s">{{sportsData.billiardsTimes}}</span>次</li>
+        		</ul>
+	        	<p>我的运动次数超过了<span class="animated overtake" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1.3s">{{overtake}}</span>的人</p>
+        	</div>
+        </div>
+        <div class="swiper-slide slide-4">
+        	<div class="animated item-container" data-ani-name="bounceIn" data-ani-duration="2s" data-ani-delay="0">
+        		<div>
+	        		<h3>至今消费情况</h3>
+        		</div>
+	        	<ul>
+	        		<li>我在{{year}}年{{half}}半年运动消费:</li>
+	        		<li><span class="animated" data-ani-name="bounceInDown" data-ani-duration="1s" data-ani-delay="1s">{{costdata}}</span>元</li>
+	        	</ul>
+	        	<div>
+	        		<h5>有钱，就是任性！</h5>
+	        		<p>继续努力保持完美身材</p>
+	        	</div>
+        	</div>
+        </div>
+        <div class="swiper-slide slide-5">
+        	<div class="animated item-container" data-ani-name="fadeIn" data-ani-duration="1s" data-ani-delay="0.1s">
+	        	<h3>亲爱的</h3>
+        		<p>一路走来，花园体育文化中心感谢有你的陪伴，我们将继续用心服务，时刻保持最好的一面。</p>
+	        	<div>
+	        		<span>2017.7.1</span><br />
+	        		<span>太原花园体育文化中心</span>
+	        	</div>
+        	</div>    
+        	<!--<div class="item-btn">
+        		<button class="animated" data-ani-name="fadeInUp" data-ani-duration="1s" data-ani-delay="0.1s">点击分享</button>
+        	</div>-->
+        </div>
+    </div>
+</div>
+
+<button class="up-arrow">
+	<i class="icon-angle-double-up"></i>
+</button> 
+<!--<button class="btn-music">
+    <i class="icon-note"></i>
+</button>-->
+
+<!--<audio loop>
+    <source src="audios/background.mp3" type="audio/mpeg">
+</audio>-->
+
+<!-- Don't delete this. It's needed for development workflow. -->
+<!-- inject:js -->
+<!-- endinject -->
+<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+<script src="javascripts/wechat.js"></script>
+<script type="text/javascript">
+	new Vue({
+		el: '#app',
+		data: {
+		  	year:"",
+		  	half:"",
+		  	regDate:"XXXX年XX月XX日",
+		  	duration: "XX",
+		  	sportsData:{},
+		  	total:"",
+		  	overtake: "0%",
+		    memebrName: "XXX",
+		    costdata: "XXX"
+		},
+		methods: {
+			getUrlParam(name){
+				var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+				var r = window.location.search.substr(1).match(reg);
+				if (r!=null) return unescape(r[2]);
+				return null;
+			}
+		},
+		mounted(){
+			var that = this;
+			var today = new Date();
+			var memberId=this.getUrlParam('memberId');
+			var startDay,endDay,year,half,regDate,duration;
+			if(today.getMonth()<6){
+				year = today.getFullYear() - 1;
+				startDay = year + "-07-01";
+				endDay = year + "-12-31";
+				half = "下";
+			}else{
+				year = today.getFullYear();
+				startDay = year + "-01-01";
+				endDay = year + "-06-30";
+				half = "上";
+			}
+			that.year = year;
+			that.half = half;
+			var hHost = location.host;
+			document.title = "我的" + year + half +"半年运动成绩单"
+		  	$.ajax({
+				type:"GET",
+				// url:"http://"+location.host+"/clubmanager/wxChain/getConsumeInfo",
+				url:"http://hyzxwx.sportgoing.com/clubmanager/wxChain/getConsumeInfo",
+				data:{
+					beginDate: startDay,
+					endDate: endDay,
+					memberId: memberId,
+					timeStamp: new Date().getTime()
+				},
+				success: function(res){
+					// console.log(res.data);
+					if(res.code == 1) {
+						alert("请先绑定会员卡");
+					}
+					if(res.code != 0) return
+					var resData = res.data;
+					var regDate = new Date(resData.regDate);
+					duration = Math.ceil((today - regDate) / 86400000);
+					regDate = regDate.getFullYear() + "年" + (regDate.getMonth() + 1) + "月" + regDate.getDate() + "日";
+					that.sportsData = resData;
+					that.memebrName = resData.memebrName;
+					that.overtake = resData.rank;
+					that.regDate = regDate;
+					that.duration = duration;
+					that.total = resData.total;
+					that.costdata = Math.round(resData.costdata);
+				},
+				error: function(err){
+					console.log(err);
+				}
+			});
+		}
+	})
+</script>
+</body>
+
+</html>

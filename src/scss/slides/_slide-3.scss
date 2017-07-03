@@ -1,0 +1,41 @@
+.slide-3,.slide-4 {
+    .animated.item-container{
+        height: 70%;
+        top: 18%;
+    }
+    h3:after{
+        content: "";
+        height: 0.1rem;
+        width: 40%;
+        background: #B0B0B0;
+        position: absolute;
+        left: 50%;
+        top: 2.5rem;
+        transform: translateX(-50%);
+    }
+    ul{
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        font-size: 1.2rem;
+        li{
+            line-height: 1.7rem;
+            text-align: left;
+            padding-left: 3rem;
+        }
+        li.none-data{
+            color: gray;
+            font-size: 1rem;
+            padding-left: 0;
+            text-align: center;
+        }
+    }
+    span{
+        font-size: 1.5rem;
+        padding-left: 0.5rem;
+    }
+    span.overtake{
+        color: #1C98C3;
+        font-size: 1.1rem;
+    }
+}
